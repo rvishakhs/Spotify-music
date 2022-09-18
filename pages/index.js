@@ -9,6 +9,7 @@ export default function Home() {
 
   const router = useRouter()
   const {data: session, status} = useSession({
+    required: true,
     onUnauthenticated(){
       router.push("/auth/signin");
     }

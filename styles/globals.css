@@ -18,6 +18,10 @@
   .btn {
     @apply text-[#CECECE] bg-[#1A1A1A] text-[13px] py-3.5 px-[100px] rounded-2xl w-full cursor-pointer font-bold bg-opacity-80 hover:bg-opacity-100 transition ease-out
   }
+  .icon {
+    @apply hover:scale-125 transition ease-out
+  }
+
 }
 
 html,

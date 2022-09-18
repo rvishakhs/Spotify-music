@@ -20,7 +20,7 @@ function Poster({track, chooseTrack}) {
 
 
   return (
-    <div className="w-[240px] h-[340px] rounded-[50px] overflow-hidden relative text-white/80 cursor-pointer hover:scale-105 hover:text-white/100 
+    <div className="w-[200px] h-[280px] md:w-[240px] md:h-[340px] rounded-[50px] overflow-hidden relative text-white/80 cursor-pointer hover:scale-105 hover:text-white/100 
     transition duration-200 ease-out group mx-auto" onClick={handleClick}>
         <img 
             src={track.albumurl}
@@ -29,7 +29,8 @@ function Poster({track, chooseTrack}) {
         />
         <div className='absolute bottom-10 inset-x-0 ml-4 flex items-center space-x-3.5'>
             <div className=' h-10 w-10 bg-[#15883e] rounded-full flex items-center justify-center group-hover:bg-[#1db954] flex-shrink-0'>
-                {track.uri === playingTrack.uri && play ? (
+                {track.uri === playingTrack.uri && play ?  (
+
                     <BsPauseFill  className='text-xl ml-[1px] '/>
                 ): (
                     <BsPlayFill  className='text-xl ml-[1px] '/>
