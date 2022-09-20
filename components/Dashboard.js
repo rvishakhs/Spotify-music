@@ -24,12 +24,12 @@ function Dashboard() {
   }
 
   return (
-    <div className='flex min-h-screen min-w-max'>
+    <div className='flex min-h-screen min-w-max lg:pb-24'>
         <Sidebar />
         <Body spotifyApi={spotifyApi} chooseTrack={chooseTrack}/>
         <Rightside spotifyApi={spotifyApi} chooseTrack={chooseTrack}/>
 
-        <div className='fixed bottom-0 left-0 right-0 z-50gu '>
+        <div className='fixed bottom-0 left-0 right-0 z-50 '>
           <Player accessToken={accessToken} trackuri={playingTrack.uri}/>
         </div>
     </div>

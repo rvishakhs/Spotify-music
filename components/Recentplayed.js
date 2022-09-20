@@ -1,8 +1,22 @@
 import React from 'react'
+import { useRecoilState } from 'recoil'
+import { playingTrackState, playState } from '../atom/playerAtom'
 
 function Recentplayed({track, choosetrack}) {
+
+
+  const [play, setPlay] = useRecoilState(playState)
+  const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState)
+
+  const handleClick = () => {
+    choosetrack(track)
+
+    if (track.uri === playingTrack.uri) {
+      setPlay = !play
+    }
+  }
   return (
-    <div className='flex items-center space-x-3'>
+    <div className='flex items-center space-x-3' onClick={handleClick}>
         <img
             src={track.albumUrl}
             alt=""
