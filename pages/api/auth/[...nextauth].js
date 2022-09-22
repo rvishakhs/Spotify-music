@@ -1,6 +1,5 @@
 import NextAuth from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
-import spotifyApi, { LOGIN_URL } from "../../../lib/spotify";
 
 /**
  * Takes a token, and returns a new token with updated
@@ -12,8 +11,8 @@ async function refreshAccessToken(token) {
     const url =
       "https://accounts.spotify.com/api/token?" +
       new URLSearchParams({
-        client_id: process.env.SPOTIFY_CLIENT_ID,
-        client_secret: process.env.SPOTIFY_CLIENT_SECRET,
+        client_id: process.env.NEXT_PUBLIC_CLIENT_ID,
+        client_secret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
         grant_type: "refresh_token",
         refresh_token: token.refreshToken,
       });
@@ -52,11 +51,11 @@ export default NextAuth({
     SpotifyProvider({
       clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
       clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
-      authorization: LOGIN_URL,
+      authorization:
+        "https://accounts.spotify.com/authorize?scope=user-read-email,playlist-read-private,user-read-email,streaming,user-read-private,user-library-read,user-library-modify,user-read-playback-state,user-modify-playback-state,user-read-recently-played,user-follow-read",
     }),
   ],
-  secret: process.env.JWT_SECRET,
-  
+
   callbacks: {
     async jwt({ token, user, account }) {
       // Initial sign in
