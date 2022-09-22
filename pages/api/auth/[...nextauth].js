@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
+import spotifyApi, { LOGIN_URL } from "../../../lib/spotify";
 
 /**
  * Takes a token, and returns a new token with updated
@@ -51,8 +52,7 @@ export default NextAuth({
     SpotifyProvider({
       clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
       clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
-      authorization:
-        "https://accounts.spotify.com/authorize?scope=user-read-email,playlist-read-private,user-read-email,streaming,user-read-private,user-library-read,user-library-modify,user-read-playback-state,user-modify-playback-state,user-read-recently-played,user-follow-read",
+      authorization: LOGIN_URL,
     }),
   ],
   secret: process.env.JWT_SECRET,
